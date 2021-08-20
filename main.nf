@@ -57,7 +57,7 @@ process create_training_sce {
     """
     dropletutils-read-10x-counts.R\
                 --samples ${train_dir}\
-                --col-names ${params.col_names}\
+                --col-names TRUE\
                 --metadata-files ${train_metadata}\
                 --cell-id-column "${params.cell_id_col}"\
                 --metadata-columns "${params.cell_id_col}","${params.cell_types_col}"\
@@ -84,7 +84,7 @@ process train_scn_classifer {
     scn-train-model.R\
             --input-object ${sce_object}\
             --cell-type-col ${params.cell_types_col}\
-            --cell-barcode-col ${params.cell_id_col}\
+            --cell-barcode-col "Barcode"\
             --n-top-genes ${params.n_top_genes}\
             --n-top-gene-pairs ${params.n_top_gene_pairs}\
             --n-rand ${params.n_rand}\
